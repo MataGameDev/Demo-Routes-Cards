@@ -1,10 +1,10 @@
 import React from 'react';
-import List from '../Character/List';
+import List2 from '../Character2/List2';
 
 function Home(props) {
     return (
         <div className= "container">
-            <List/>
+            <List2/>
         </div>
     );
 }

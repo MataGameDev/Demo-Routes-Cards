@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import Character from './Character';
-import Pagination from './Pagination';
+import Character2 from '../Character2/Character2';
+import Pagination from '@mui/material/Pagination';
 
-export default function List() {
+export default function List2() {
     const [characters, setCharacter] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -10,8 +10,8 @@ export default function List() {
     const [nextPageUrl, setNextPageUrl] = useState();
     const [prevPageUrl, setPrevPageUrl] = useState();
     const [pages, setPages] = useState();
+    const [page, setPage] = useState(1);
 
-    
 
     useEffect(() => {
         const url = currentPageUrl;
@@ -37,8 +37,10 @@ export default function List() {
         setCurrentPageUrl(prevPageUrl);
     }
     //Choose Page
-    const goToPage = (num) =>{
+    const goToPage = (event,num) =>{
+        setPage(num);
         setCurrentPageUrl(`https://rickandmortyapi.com/api/character?page=${num}`);
+
     }
 
     if(loading)
@@ -46,17 +48,17 @@ export default function List() {
 
     return (
         <div>
-            <Pagination
-            nextPage={nextPage}
-            prevPage={prevPage}
-            goToPage={goToPage}
-            pages={pages}
+            <Pagination 
+                count={pages} 
+                page={page}
+                onChange={goToPage}
+
             />
             <h2>Characters</h2>
             <div className="row">
                 {
                 characters.map((character) => (
-                    <Character
+                    <Character2
                         key={character.id}
                         name={character.name}
                         origin={character.origin}
@@ -65,12 +67,11 @@ export default function List() {
                 ))
                 }
             </div>
-            <Pagination
-            nextPage={nextPage}
-            prevPage={prevPage}
-            goToPage={goToPage}
-            pages={pages}
-            />
+            <Pagination 
+                count={pages} 
+                page={page}
+                onChange={goToPage}
+                />
         </div>
     )
 }
