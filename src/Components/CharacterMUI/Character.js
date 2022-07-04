@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Character2(props) {
+export default function Character(props) {
     const {name, origin, image} = props;
 
     return(

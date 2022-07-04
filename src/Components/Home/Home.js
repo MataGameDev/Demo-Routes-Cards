@@ -1,10 +1,10 @@
 import React from 'react';
-import List2 from '../Character2/List2';
+import List from '../CharacterMUI/List';
 
 function Home(props) {
     return (
         <div className= "container">
-            <List2/>
+            <List/>
         </div>
     );
 }
